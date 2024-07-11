@@ -87,7 +87,7 @@ public class UserController {
     public void openCheckingAccount(String newAction, String user){
         System.out.println("What would you like to do?\n ");
         System.out.println("1. Open a checking account ");
-        System.out.println("2. Close a checking account  ");
+        System.out.println("2. Close a checking accoun ");
         System.out.println("3. Deposit money ");
         System.out.println("4. Withdraw money ");
         System.out.println("5. Check balance ");
