@@ -112,7 +112,7 @@ public class UserController {
             }
             // this exception triggers if the user enters invalid credentials
         } catch(LoginFail exception){
-            System.out.println(exception.getMessage());
+            System.out.println(exception.getMessage()) ;
         }
     }
 

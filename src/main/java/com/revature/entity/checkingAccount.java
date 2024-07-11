@@ -42,7 +42,7 @@ public class checkingAccount implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUsername(), getBalance());
+        return Objects.hash(getUsername(), getBalance()) ;
     }
 
     @Override
