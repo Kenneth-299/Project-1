@@ -1,7 +1,9 @@
 package com.revature.service;
 
 import com.revature.entity.User;
+import com.revature.entity.checkingAccount;
 import com.revature.exception.LoginFail;
+import com.revature.repository.AccountDao;
 import com.revature.repository.UserDao;
 
 import java.util.List;
@@ -29,6 +31,7 @@ public class UserService {
         refactoring SIGNIFICANTLY simpler
      */
     private UserDao userDao;
+    private AccountDao accountDao;
     /*
         the service needs to facilitate data between the controller layer and the
         repository layer, so we need to provide a dao to the service so database
@@ -95,6 +98,10 @@ public class UserService {
             }
         }
         return usernameIsUnique;
+    }
+
+    public void makeAccount(String username){
+        accountDao.createAccount(username);
     }
 
 }

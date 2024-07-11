@@ -86,28 +86,25 @@ public class UserController {
 
     public void openCheckingAccount(String newAction, String user){
         System.out.println("What would you like to do?\n ");
-        System.out.println("1. Open a checking account ");
-        System.out.println("2. Close a checking account ");
-        System.out.println("3. Deposit money ");
-        System.out.println("4. Withdraw money ");
+        System.out.println("1. Open a checking account");
+        System.out.println("2. Close a checking account");
+        System.out.println("3. View checking account");
+        /*System.out.println("4. Withdraw money ");
         System.out.println("5. Check balance ");
-        System.out.println("q. quit ");
+        System.out.println("q. quit "); */
 
         try{
             String userActionIndicated = scanner.nextLine();
             switch (userActionIndicated) {
                 case "1":
+
                     break;
                 case "2":
                     //controlMap.put("User", login().getUsername());
                     break;
                 case "3":
                     break;
-                case "4":
-                    break;
 
-                case "5":
-                    break;
                 case "q":
                     System.out.println("Goodbye!");
                     // set the loopApplication boolean to false to exit the while loop in the main method
