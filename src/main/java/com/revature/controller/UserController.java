@@ -1,6 +1,7 @@
 package com.revature.controller;
 
 import com.revature.exception.LoginFail;
+import com.revature.service.AccountService;
 import com.revature.service.UserService;
 import com.revature.entity.User;
 
@@ -11,6 +12,7 @@ public class UserController {
 
     private Scanner scanner;
     private UserService userService;
+    private AccountService accountService;
 
     /*
         The controller takes in a scanner and service object
@@ -20,9 +22,10 @@ public class UserController {
             - userService gives the controller access to the service layer, which will
               handle enforcing our business and software requirements
      */
-    public UserController(Scanner scanner, UserService userService){
+    public UserController(Scanner scanner, UserService userService, AccountService accountService){
         this.scanner = scanner;
         this.userService = userService;
+        this.accountService = accountService;
     }
 
     /*
@@ -84,7 +87,7 @@ public class UserController {
         return new User(newUsername, newPassword);
     }
 
-    public void openCheckingAccount(String newAction, String user){
+    public void openCheckingAccount(Map<String,String> controlMap){
         System.out.println("What would you like to do?\n ");
         System.out.println("1. Open a checking account");
         System.out.println("2. Close a checking account");
@@ -97,7 +100,7 @@ public class UserController {
             String userActionIndicated = scanner.nextLine();
             switch (userActionIndicated) {
                 case "1":
-
+                    accountService.makeAccount(controlMap.get("User"));
                     break;
                 case "2":
                     //controlMap.put("User", login().getUsername());
@@ -109,6 +112,7 @@ public class UserController {
                     System.out.println("Goodbye!");
                     // set the loopApplication boolean to false to exit the while loop in the main method
                     //controlMap.put("Continue Loop", "false");
+                    controlMap.put("Continue Loop", "false");
             }
             // this exception triggers if the user enters invalid credentials
         } catch(LoginFail exception){

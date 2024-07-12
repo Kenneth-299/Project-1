@@ -20,7 +20,6 @@ public class InMemoryUser implements UserDao{
     private List<User> users;
     public InMemoryUser(){
         users = new ArrayList<>();
-        users.add(new User("admin","1234"));
     }
 
     @Override

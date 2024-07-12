@@ -4,5 +4,5 @@ import com.revature.entity.checkingAccount;
 
 public interface AccountDao {
 
-    checkingAccount createAccount(String username);
+    checkingAccount createAccount(checkingAccount username);
 }
