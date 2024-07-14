@@ -1,4 +1,5 @@
 drop table if exists "user";
+drop table if exists "account";
 
 create table "user"(
 	username text Primary key unique,
@@ -10,5 +11,3 @@ create table "account"(
 	balance integer,
 	foreign key(username) references user(username)
 );
-
-insert into "user" values ('admin', '1234');
