@@ -6,11 +6,11 @@ import java.util.Objects;
 public class checkingAccount implements Serializable {
 
     private String username;
-    private Integer balance;
+    private Double balance;
 
     public checkingAccount(){}
 
-    public checkingAccount(String username, Integer balance){
+    public checkingAccount(String username, Double balance){
         this.username = username;
         this.balance = balance;
     }
@@ -24,11 +24,11 @@ public class checkingAccount implements Serializable {
         this.username = username;
     }
 
-    public Integer getBalance() {
+    public Double getBalance() {
         return balance;
     }
 
-    public void setBalance(Integer balance) {
+    public void setBalance(Double balance) {
         this.balance = balance;
     }
 

@@ -44,6 +44,7 @@ public class Main {
             Map<String, String> controlMap = new HashMap<>();
             controlMap.put("Continue Loop", "true");
             controlMap.put("logout", "true");
+            controlMap.put("accountMade",  "false");
             while(Boolean.parseBoolean(controlMap.get("Continue Loop"))){
                 // we pass the controlMap into the promptUserForService to get the potential user data and
                 // check it in the next if statement

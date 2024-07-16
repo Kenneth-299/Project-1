@@ -18,7 +18,7 @@ public class SqliteAccountDao implements AccountDao{
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setString(1, account.getUsername());
-            preparedStatement.setInt(2, account.getBalance());
+            preparedStatement.setDouble(2, account.getBalance());
 
             int result = preparedStatement.executeUpdate();
             if(result == 1){
@@ -39,7 +39,6 @@ public class SqliteAccountDao implements AccountDao{
         String sql = "Select * from account where username = ?";
 
         try(Connection connection = DatabaseConnector.createConnection()){
-            List<checkingAccount> newAccount = new ArrayList<>();
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
@@ -53,7 +52,7 @@ public class SqliteAccountDao implements AccountDao{
                 checkingAccount acc = new checkingAccount();
 
                 acc.setUsername(resultSet.getString("username"));
-                acc.setBalance(resultSet.getInt("balance"));
+                acc.setBalance(resultSet.getDouble("balance"));
 
                 newChecking.add(acc);
             }
@@ -88,12 +87,13 @@ public class SqliteAccountDao implements AccountDao{
 
     @Override
     public checkingAccount addNewBalance(checkingAccount acc) {
-        String sql = "Update account set balance = ?";
+        String sql = "Update account set balance = ? where username = ?";
 
         try(Connection connection = DatabaseConnector.createConnection()){
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-            preparedStatement.setInt(1, acc.getBalance());
+            preparedStatement.setDouble(1, acc.getBalance());
+            preparedStatement.setString(2, acc.getUsername());
 
             int result = preparedStatement.executeUpdate();
             if(result == 1){

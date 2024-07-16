@@ -2,6 +2,7 @@ package com.revature.service;
 
 import com.revature.entity.checkingAccount;
 import com.revature.repository.AccountDao;
+import com.revature.repository.InMemoryAccount;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class AccountService {
     }
 
     public void makeAccount(String username){
-        checkingAccount newAccount = new checkingAccount(username, 0);
+        checkingAccount newAccount = new checkingAccount(username, 0.00);
         accountDao.createAccount(newAccount);
     }
 
@@ -32,9 +33,9 @@ public class AccountService {
         return bal.get(0);
     }
 
-    public checkingAccount withdrawMoney(String username, Integer amountWithdraw){
+    public checkingAccount withdrawMoney(String username, Double amountWithdraw){
         List<checkingAccount> acc = getAccount(username);
-        Integer amountOwned = acc.get(0).getBalance();
+        Double amountOwned = acc.get(0).getBalance();
 
         if(amountOwned - amountWithdraw > 0){
             checkingAccount newBal = new checkingAccount(username, amountOwned - amountWithdraw);
@@ -45,12 +46,12 @@ public class AccountService {
         }
     }
 
-    public checkingAccount depositMoney(String username, Integer amountWithdraw){
+    public checkingAccount depositMoney(String username, Double amountDeposit){
         List<checkingAccount> acc = getAccount(username);
-        Integer amountOwned = acc.get(0).getBalance();
+        Double amountOwned = acc.get(0).getBalance();
+        acc.get(0).setBalance(amountOwned + amountDeposit);
 
-        checkingAccount newBal = new checkingAccount(username, amountOwned + amountWithdraw);
-        return accountDao.addNewBalance(newBal);
+        return accountDao.addNewBalance(acc.get(0));
     }
 
 }

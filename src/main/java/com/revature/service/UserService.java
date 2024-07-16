@@ -1,9 +1,8 @@
 package com.revature.service;
 
 import com.revature.entity.User;
-import com.revature.entity.checkingAccount;
 import com.revature.exception.LoginFail;
-import com.revature.repository.AccountDao;
+import com.revature.exception.UserRegisterFail;
 import com.revature.repository.UserDao;
 
 import java.util.List;
@@ -63,7 +62,7 @@ public class UserService {
         // 3.2 inform user of results
         // we can use an exception to return an error message if the credentials are not persisted
         // TODO: handle this exception and make it a custom exception
-        throw new RuntimeException("placeholder for custom exception");
+        throw new UserRegisterFail("Can not make account. Try again\n");
     }
 
     public User checkLoginCredentials(User credentials){

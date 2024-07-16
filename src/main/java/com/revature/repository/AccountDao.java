@@ -13,4 +13,5 @@ public interface AccountDao {
     checkingAccount deleteCheckingAccount(checkingAccount username);
 
     checkingAccount addNewBalance(checkingAccount acc);
+
 }

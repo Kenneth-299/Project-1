@@ -8,6 +8,6 @@ create table "user"(
 
 create table "account"(
 	username text,
-	balance integer,
+	balance decimal(8,2),
 	foreign key(username) references user(username)
 );
